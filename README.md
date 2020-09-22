@@ -40,27 +40,27 @@ We use `getStaticPaths` to render a webpage for each top-level Frame in each fil
 First, recall that every Figma File has the following structure:
 
 ```
-Project > File[] > Page[] > Frame[]
+Project > File[] > Canvas[] > Frame[]
 ```
 
-Every Project can have multuple Files, which can have multiple Pages, which in turn can have multiple Frames. We render a webpage for every top-level Frame within each Page.
+Every Project can have multuple Files, which can have multiple Canvases, which in turn can have multiple Frames. We render a webpage for every top-level Frame within each Canvas.
 
 Take the following Figma file structure:
 
 ```
-- Docs
-  - Setup
-    - Getting started
-    - Living styleguides
-  - Color
-    - Light tokens
-    - Dark tokens
-  - Typography
-    - Uber Move
-    - Uber Move Mono
-  - Grid
-    - Columns
-    - Rows
+- Docs (File)
+  - Setup (Canvas)
+    - Getting started (Frame)
+    - Living styleguides (Frame)
+  - Color (Canvas)
+    - Light tokens (Frame)
+    - Dark tokens (Frame)
+  - Typography (Canvas)
+    - Uber Move (Frame)
+    - Uber Move Mono (Frame)
+  - Grid (Canvas)
+    - Columns (Frame)
+    - Rows (Frame)
 ```
 
 This results in the following webpages being rendered:
@@ -76,7 +76,7 @@ This results in the following webpages being rendered:
 - Rows
 ```
 
-In our navigation, these pages will be grouped by their parent Pages. Something like this:
+In our navigation, these pages will be grouped by their parent Canvases. Something like this:
 
 ```
 Setup
@@ -89,8 +89,8 @@ We apply this to each file in the Figma project. Note, the file structure itself
 
 There are a couple more conventions to keep in mind:
 
-- We only use Pages that start with a capital letter.
-- We only use Frames that start with a captial letter and are visible.
+- We only use Canvases and Frames that start with a capital letter.
+- We only use Frames that are visible.
 
 So, given any arbitrary Project, provided at build-time as `FIGMA_PROJECT_ID`, so long as the files in the project follow the above conventions, we can build a website.
 
